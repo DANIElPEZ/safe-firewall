@@ -1,0 +1,12 @@
+SafeWeb con DNS wildcard y registro de consultas
+================================================
+Instala: python -m pip install -r requirements.txt
+Inicializa base: python -c "from app import init; init()"
+Como ADMINISTRADOR ejecuta: python dns_filter.py (UDP 127.0.0.1:53)
+En otra consola ejecuta: python app.py; panel http://127.0.0.1:5000
+
+Añade dominios raíz en el panel. DNS filter bloquea dominio exacto y cualquier subdominio y registra fecha, nombre consultado, IP de cliente y tipo DNS.
+
+Configuración DNS Windows: solo cuando el filtro esté iniciado, cambia DNS IPv4 del adaptador a 127.0.0.1. Antes anota configuración actual. Para restaurar, selecciona "Obtener DNS automáticamente" y detén dns_filter.py con Ctrl+C.
+
+Limitación: el contador es de consultas DNS bloqueadas, no visitas ni clics. Caché del navegador, DoH/DoT, VPN/proxy o aplicaciones pueden evitar consultas al DNS local. Es una herramienta educativa/local; no inspecciona HTTPS.
